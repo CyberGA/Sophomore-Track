@@ -62,7 +62,7 @@ npm install @openzeppelin/contracts
 
 Create a new file inside the `contracts` directory called `Exchange.sol`. In this tutorial we would cover each part of the contract separately.
 
-First let's start by importing `ERC20.sol` We need this because our Exchange needs to mint and create `Crypto Dev LP` tokens that's why it needs to inherit ERC20.sol
+First let's start by importing `ERC20.sol`. We need this because our Exchange needs to mint and create `Crypto Dev LP` tokens that's why it needs to inherit ERC20.sol.
 
 ```go
 // SPDX-License-Identifier: MIT
@@ -102,9 +102,9 @@ Now let's create a `constructor` for our contract
 Time to create a function to get reserves of the `Eth` and `Crypto Dev` tokens held
 by the contract.
 
-The ETH reserve would be equal to the balance of the contract and can be found using `address(this).balance` so let's just create a function only for getting reserves of the `Crypto Dev` tokens
+The ETH reserve would be equal to the balance of the contract and can be found using `address(this).balance` so let's just create a function only for getting reserves of the `Crypto Dev` tokens.
 
-We know that the `Crypto Dev Token` contract that we deployed is an ERC20. So we can just call the `balanceOf` to check the balance of `CryptoDev Tokens` that the contract holds
+We know that the `Crypto Dev Token` contract that we deployed is an ERC20. So we can just call the `balanceOf` to check the balance of `CryptoDev Tokens` that the contract holds.
 
 ```go
 /**
