@@ -190,7 +190,7 @@ The amount of ether that would be sent back to the user would be based on a rati
 
 The amount of Crypto Dev tokens that would be sent back to the user would also be based on a ratio. The ratio is `(Crypto Dev sent back to the user) / (current Crypto Dev token reserve) = (amount of LP tokens that user wants to withdraw) / (total supply of LP tokens)`.
 
-The amount of `LP` tokens that user would use to remove liquidity would be burnt
+The amount of `LP` tokens that user would use to remove liquidity would be burnt.
 
 ```go
 /**
@@ -226,9 +226,9 @@ function removeLiquidity(uint _amount) public returns (uint , uint) {
 }
 ```
 
-Next let's implement the swap functionality
+Next let's implement the swap functionality.
 
-Swap would go two ways. One way would be `Eth` to `Crypto Dev` tokens and other would be `Crypto Dev` to `Eth`
+Swap would go two ways. One way would be `Eth` to `Crypto Dev` tokens and other would be `Crypto Dev` to `Eth`.
 
 It's important for us to determine: Given `x` amount of `Eth`/`Crypto Dev` token sent by the user, how many `Eth`/`Crypto Dev` tokens would he receive from the swap?
 
@@ -266,7 +266,7 @@ function getAmountOfTokens(
 }
 ```
 
-Now let's implement a function to swap `ETH` for `Crypto Dev` tokens
+Now let's implement a function to swap `ETH` for `Crypto Dev` tokens.
 
 ```go
 /**
@@ -315,7 +315,7 @@ function cryptoDevTokenToEth(uint _tokensSold, uint _minEth) public {
         _tokensSold
     );
     // send the `ethBought` to the user from the contract
-    payable(msg.sender).transfer(ethBought);
+    (bool sent, ) = payable(msg.sender).call{value: ethBought}("");
 }
 ```
 
@@ -495,7 +495,7 @@ contract Exchange is ERC20 {
             _tokensSold
         );
         // send the `ethBought` to the user from the contract
-        payable(msg.sender).transfer(ethBought);
+        (bool sent, ) = payable(msg.sender).call{value: ethBought}("");
     }
 }
 ```
