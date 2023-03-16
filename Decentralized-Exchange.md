@@ -219,7 +219,7 @@ function removeLiquidity(uint _amount) public returns (uint , uint) {
     // remove liquidity
     _burn(msg.sender, _amount);
     // Transfer `ethAmount` of Eth from the contract to the user's wallet
-    payable(msg.sender).transfer(ethAmount);
+    (bool, ) = payable(msg.sender).call{value: ethAmount}("");
     // Transfer `cryptoDevTokenAmount` of Crypto Dev tokens from the contract to the user's wallet
     ERC20(cryptoDevTokenAddress).transfer(msg.sender, cryptoDevTokenAmount);
     return (ethAmount, cryptoDevTokenAmount);
@@ -422,7 +422,7 @@ contract Exchange is ERC20 {
         // remove liquidity
         _burn(msg.sender, _amount);
         // Transfer `ethAmount` of Eth from the contract to the user's wallet
-        payable(msg.sender).transfer(ethAmount);
+        (bool sent, ) = payable(msg.sender).call{value: ethAmount}("");
         // Transfer `cryptoDevTokenAmount` of `Crypto Dev` tokens from the contract to the user's wallet
         ERC20(cryptoDevTokenAddress).transfer(msg.sender, cryptoDevTokenAmount);
         return (ethAmount, cryptoDevTokenAmount);
