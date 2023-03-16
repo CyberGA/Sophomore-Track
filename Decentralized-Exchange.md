@@ -566,7 +566,7 @@ main()
   });
 ```
 
-Open the `hardhat.config.js` file, we'll the `goerli` network here so that we can deploy our contract to the Goerli network. Replace all the lines in the `hardhat.config.js` file with the given below lines
+Open the `hardhat.config.js` file, we'll use the `goerli` network here so that we can deploy our contract to the Goerli network. Replace all the lines in the `hardhat.config.js` file with the given below lines.
 
 ```js
 require("@nomicfoundation/hardhat-toolbox");
